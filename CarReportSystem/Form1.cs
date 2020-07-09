@@ -16,5 +16,26 @@ namespace CarReportSystem
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CarReport carReport = new CarReport();
+            
+            carReport.Maker = GetMaker();
+                        
+        }
+
+        private CarReport.CarMaker GetMaker()
+        {
+            //LINQとラムダ式を使用
+            RadioButton selectMaker = (MakerGroup.Controls.Cast<RadioButton>().FirstOrDefault(rb => rb.Checked));
+            return (CarReport.CarMaker)int.Parse(selectMaker.Tag.ToString());
+        }
     }
 }
